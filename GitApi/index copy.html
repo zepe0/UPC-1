@@ -13,17 +13,12 @@
   </head>
   <body>
     <script>
-
-
+      
       /* const usuario = "zepe0"; */
       let usuario = prompt("introduce tu nombre de usuario de GitHub");
-
-
-      $.get(
-        `https://api.github.com/users/${usuario}/repos`,
-        function (data) {
-          console.log(data);
-          $("h2.demo-container").html(
+$.get(  `https://api.github.com/users/${usuario}/repos` )
+  .then( function(data) {
+    $("h2.demo-container").html(
             `<img src="${data[0].owner.avatar_url}" width="80"/></img>
             Repositorios de ${data[0].owner.login} `
           );
@@ -62,10 +57,21 @@
                 </li>
             `);
           });
+        
           
-        },
-        "json"
-      );
+    
+  },"json" 
+  )
+  .catch( function(erros) {
+    console.log(erros)
+    $("h2.demo-container").html(
+      
+            `<p>User ${erros.responseJSON.message}</p> `
+          );
+  } );
+
+
+
     </script>
     <div>
       <h2
