@@ -5,6 +5,7 @@ function repo() {
       var nodo = document.getElementById("repo")
       repos.map((repo)=>{
         nodo.innerHTML(repo.name)
+        
       })
     })
    
