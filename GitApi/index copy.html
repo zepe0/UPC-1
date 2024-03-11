@@ -45,7 +45,7 @@ $.get(  `https://api.github.com/users/${usuario}/repos` )
             let update = new Intl.DateTimeFormat(options).format(formatoupdate);
 
             $("#repo").append(`
-            <li style="   border: 2px solid; padding: 10px; text-align:center">
+            <li style="border: 2px solid; padding: 10px; text-align:center">
 
                 <p>Repo : ${repo.name}</p>
                 <p>Visibilidad: ${repo.visibility}</p>
@@ -53,7 +53,7 @@ $.get(  `https://api.github.com/users/${usuario}/repos` )
                 <p>Update: ${update}</p>
                 <a href="${repo.html_url}"> Ver repositorio </a>
                 <p class="clone" value=${repo.clone_url}>   </p>
-                <button id="copiarBoton"  >Copiar URL Clone </button>
+                <button id="copiarBoton" data="${repo.html_url}" >Copiar URL Clone </button>
                 </li>
             `);
           });
