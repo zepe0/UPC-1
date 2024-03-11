@@ -31,6 +31,15 @@
           $(".clone").click(function () {
 
             var inputclone = event.target.attributes.data.value
+
+            navigator.clipboard.writeText(inputclone)
+              .then(() => {
+                console.log('Texto copiado al portapapeles')
+              })
+              .catch(err => {
+                console.error('Error al copiar al portapapeles:', err)
+              })
+
             var b_select = event.target
             var inputselect = b_select.previousElementSibling
             /* TODO  -- > CAMBIAR POR FEEDBACK  alert(`${inputclone}`);  */
@@ -68,9 +77,9 @@
                 <p>Creado: ${creado}</p>
                 <p>Update: ${update}</p>
                 <a href="${repo.html_url}"> Ver repositorio </a>
-                <input value=${repo.clone_url} style="color: transparent; border:none"> </input>
-                <button id="copiarBoton${i}" data=${repo.clone_url} class="clone" >Copiar URL Clone </button>
-                </li>
+                <input value=${repo.clone_url} style="color: transparent; border:none; width:0px height:0px"> </input>
+                <button button id ="copiarBoton${i}" data = ${repo.clone_url} class= "clone"> Copiar URL Clone </button>
+                </li >
             `);
         });
 
